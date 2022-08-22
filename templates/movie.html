@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block content %}
+<title>vdgfdgfd{{movie.title}}</title>
+<h1 style="color:green";>Movie details</h1>
+
+<h1>{{movie.title}}</h1>
+<b>Release Year: </b>
+{{movie.year}} </br>
+<b>Description: </b>
+{{movie.description}}</br>
+<b>Roles: </b>
+{% for person in movie.actors %}
+ {{person.actor}} plays {{person.role}}<br />
+
+{% endfor %}
+
+{% endblock %}

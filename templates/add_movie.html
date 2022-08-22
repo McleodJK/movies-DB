@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<h1 style="color:green";>add movie</h1>
+<table class="w3-table-all">
+  <tr>
+    <th>Movie</th>
+    <th>Year</th>
+    <th>Delete?</th>
+  </tr>
+{% for movie in movies %}
+    <tr>
+      <td>{{ movie.title }}</td>
+      <td>{{ movie.year }}</td>
+    <td><form action="/delete_movie" method="post">
+    <input type="hidden" value="{{movie.id}}" name="movie_id">
+    <input type="submit" value="Delete">
+    </form></td>
+    </tr>
+{% endfor %}
+
+</table>
+</br>
+<h3>Add a new Movie</h3>
+movie title | movie year | movie description
+<form action="/add_movie" method="post">
+<input type="text" name="title">
+<input type="text" name="year">
+<input type="text" name="description">
+<input type="submit" value="add">
+</form>
+
+<h3>Add a new Actor</h3>
+name | BIRTHDATE
+<form action="/add_actor" method="post">
+<input type="text" name="name">
+<input type="text" name="dob">
+<input type="submit" value="add">
+</form>
+
+<h3>Add a new Role</h3>
+<form action="/add_role" method="post">
+Choose a Movie<SELECT name="movie">
+{% for movie in movies %}
+	<OPTION value={{movie.id}}>{{movie.title}}</option>
+{% endfor %}
+</SELECT>
+  Choose an Actor<SELECT name="actor">
+{% for actor in actors %}
+	<OPTION value={{actor.id}}>{{actor.name}}</option>
+{% endfor %}
+  </SELECT>
+  Input their role <input type = "text" name = "role">
+  <input type="submit" value="add">
+</form>
+
+<!--https://csveda.com/fill-a-dropdown-combo-in-flask-and-postgresql/-->
+
+<form action="/logout" method="post">
+    <h1>Logout Here</h1>
+<input type="submit" value="Logout">
+</form>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<h3>Choose a movie</h3>
+<form action="/goto_movie" method="post">
+Choose a Movie<SELECT name="movie_id">
+{% for movie in movies %}
+	<OPTION value={{movie.id}}>{{movie.title}}</option>
+{% endfor %}
+    <input type="submit" value="Go">
+</SELECT>
+</form>
+{% endblock %}

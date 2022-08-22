@@ -1,0 +1,14 @@
+<nav>
+  <hr>
+  <a href="/">Home</a>
+  <a href="/all_movies">List All Movies</a>
+  <a href="/about_us">About Us</a>
+  <a href="/choose_movie">Choose movie</a>
+                                        
+  {% if current_user.is_authenticated %}
+  <a href="/add_movie">Add movie</a>
+  {% endif %}
+  
+  <a href="/login">Login</a>
+  <hr>
+</nav>
