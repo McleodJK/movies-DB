@@ -187,7 +187,22 @@ def add_role():
     movies = models.Movie.query.all()
     actors = models.Actor.query.all()
     return render_template('add_movie.html', page_title='Add', movies = movies, actors = actors)
-  
+
+# https://hackersandslackers.com/flask-wtforms-forms/
+    
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    """Standard `contact` form."""
+    form = ContactForm()
+    if form.validate_on_submit():
+        return redirect(url_for("success"))
+    return render_template(
+        "contact.jinja2",
+        form=form,
+        template="form-template"
+    )
+
+    
 ######################## 404 ########################
 
 @app.errorhandler(404)
